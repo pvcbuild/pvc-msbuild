@@ -28,6 +28,7 @@ namespace PvcPlugins
             this.buildTarget = buildTarget;
             this.configurationName = configurationName;
             this.enableParallelism = enableParallelism;
+            this.toolsVersion = toolsVersion;
         }
 
         public override IEnumerable<PvcStream> Execute(IEnumerable<PvcStream> inputStreams)
