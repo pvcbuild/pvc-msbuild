@@ -1,17 +1,17 @@
-﻿<?xml version="1.0"?>
-<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+<?xml version="1.0"?>
+<package >
   <metadata>
-    <id>Pvc.MSBuild</id>
-    <version>0.0.1.0</version>
-    <title>Pvc.MSBuild</title>
-    <authors>Brandon Stirnaman</authors>
-    <owners>Brandon Stirnaman</owners>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Description</description>
-    <copyright>Copyright © 2014</copyright>
-    <dependencies>
-      <dependency id="Pvc.Core" version="0.0.1.0" />
-    </dependencies>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>https://github.com/pvcbuild/pvc-msbuild/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/pvcbuild/pvc-msbuild</projectUrl>
+    <iconUrl>http://i.imgur.com/9F9yb22.png</iconUrl>
+    <description>$description$</description>
+    <copyright>Copyright 2014</copyright>
+    <tags>PVC msbuild plugin scriptcs</tags>
   </metadata>
   <files>
     <file src="bin\Debug\*.dll" exclude="bin\Debug\Pvc.Core.dll" target="lib\net45" />
