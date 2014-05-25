@@ -31,12 +31,19 @@ namespace PvcPlugins
             this.toolsVersion = toolsVersion;
         }
 
+        public override string[] SupportedTags
+        {
+            get
+            {
+                return new[] { ".csproj", ".vbproj", ".vcxproj", ".proj", ".sln" };
+            }
+        }
+
         public override IEnumerable<PvcStream> Execute(IEnumerable<PvcStream> inputStreams)
         {
-            var projectSolutionStreams = inputStreams.Where(x => Regex.IsMatch(x.StreamName, @"\.(.*proj|sln)$"));
             var msBuildPath = ToolLocationHelper.GetPathToBuildToolsFile("msbuild.exe", this.toolsVersion, DotNetFrameworkArchitecture.Current);
 
-            foreach (var projectSolutionStream in projectSolutionStreams)
+            foreach (var projectSolutionStream in inputStreams)
             {
                 var workingDirectory = Path.GetDirectoryName(projectSolutionStream.StreamName);
                 var args = new [] {
@@ -53,7 +60,7 @@ namespace PvcPlugins
                 new StreamReader(resultStreams.Item1).ReadToEnd();
             }
 
-            return inputStreams.Except(projectSolutionStreams);
+            return new PvcStream[] { };
         }
     }
 }

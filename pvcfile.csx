@@ -1,8 +1,4 @@
 pvc.Task("nuget-push", () => {
-	// configure NuGet
-	PvcNuGet.NuGetExePath = @"C:\Chocolatey\bin\NuGet.bat";
-	PvcNuGet.ApiKey = "";
-
 	pvc.Source("src/Pvc.MSBuild.csproj")
 	   .Pipe(new PvcNuGetPack(
 			createSymbolsPackage: true
