@@ -17,6 +17,7 @@ namespace PvcPlugins
         private readonly string buildTarget = null;
         private readonly string configurationName = null;
         private readonly bool enableParallelism = false;
+        private readonly string outputPath = null;
         private readonly string targetFrameworkVersion = null;
         private readonly string toolsVersion = null;
 
@@ -24,12 +25,14 @@ namespace PvcPlugins
             string buildTarget = "Build",
             string configurationName = "Debug",
             bool enableParallelism = false,
+            string outputPath = @"bin\Debug",
             string targetFrameworkVersion = "v4.5",
             string toolsVersion = "12.0")
         {
             this.buildTarget = buildTarget;
             this.configurationName = configurationName;
             this.enableParallelism = enableParallelism;
+            this.outputPath = outputPath;
             this.targetFrameworkVersion = targetFrameworkVersion;
             this.toolsVersion = toolsVersion;
         }
@@ -54,7 +57,8 @@ namespace PvcPlugins
                     "/property:Configuration=" + this.configurationName,
                     "/verbosity:minimal",
                     this.enableParallelism ? "" : "/m",
-                    this.targetFrameworkVersion == null ? "" : "/property:TargetFrameworkVersion=" + this.targetFrameworkVersion
+                    this.targetFrameworkVersion == null ? "" : "/property:TargetFrameworkVersion=" + this.targetFrameworkVersion,
+                    "/property:OutputPath=" + this.outputPath
                 };
 
                 var resultStreams = PvcUtil.StreamProcessExecution(msBuildPath, workingDirectory, args);
