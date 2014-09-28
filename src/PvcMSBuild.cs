@@ -24,13 +24,13 @@ namespace PvcPlugins
             string buildTarget = "Build",
             string configurationName = "Debug",
             bool enableParallelism = false,
-            string targetFramework = "v4.5",
+            string targetFrameworkVersion = "v4.5",
             string toolsVersion = "12.0")
         {
             this.buildTarget = buildTarget;
             this.configurationName = configurationName;
             this.enableParallelism = enableParallelism;
-            this.targetFrameworkVersion = targetFramework;
+            this.targetFrameworkVersion = targetFrameworkVersion;
             this.toolsVersion = toolsVersion;
         }
 
