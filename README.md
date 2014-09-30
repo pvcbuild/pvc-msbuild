@@ -7,7 +7,10 @@ PVC Plugin to execute MSBuild against solution files and project files. Multiple
 /// Execute a build with the default options:
 ///   buildTarget: "Build"
 ///   configuration: "Debug"
+///   defineConstants: ""
 ///   enableParallelism: false
+///   outputPath: @"bin\Debug"
+///   targetFrameworkVersion: "v4.5"
 ///   toolsVersion: "12.0"
 pvc.Source("SolutionFile.sln")
    .Pipe(new PvcMSBuild());

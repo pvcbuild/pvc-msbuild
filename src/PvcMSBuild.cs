@@ -16,18 +16,27 @@ namespace PvcPlugins
     {
         private readonly string buildTarget = null;
         private readonly string configurationName = null;
+        private readonly string defineConstants = null;
         private readonly bool enableParallelism = false;
+        private readonly string outputPath = null;
+        private readonly string targetFrameworkVersion = null;
         private readonly string toolsVersion = null;
 
         public PvcMSBuild(
             string buildTarget = "Build",
             string configurationName = "Debug",
+            string defineConstants = "",
             bool enableParallelism = false,
+            string outputPath = @"bin\Debug",
+            string targetFrameworkVersion = "v4.5",
             string toolsVersion = "12.0")
         {
             this.buildTarget = buildTarget;
             this.configurationName = configurationName;
+            this.defineConstants = defineConstants;
             this.enableParallelism = enableParallelism;
+            this.outputPath = outputPath;
+            this.targetFrameworkVersion = targetFrameworkVersion;
             this.toolsVersion = toolsVersion;
         }
 
@@ -50,7 +59,10 @@ namespace PvcPlugins
                     "/target:" + this.buildTarget,
                     "/property:Configuration=" + this.configurationName,
                     "/verbosity:minimal",
-                    this.enableParallelism ? "" : "/m"
+                    this.enableParallelism ? "" : "/m",
+                    "/property:TargetFrameworkVersion=" + this.targetFrameworkVersion,
+                    "/property:OutputPath=" + this.outputPath,
+                    (string.IsNullOrWhiteSpace(this.defineConstants) ? "" : "/property:DefineConstants=" + this.defineConstants)
                 };
 
                 var resultStreams = PvcUtil.StreamProcessExecution(msBuildPath, workingDirectory, args);
@@ -64,3 +76,4 @@ namespace PvcPlugins
         }
     }
 }
+
